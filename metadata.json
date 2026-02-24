@@ -1,0 +1,7 @@
+{
+  "name": "Prod - SupriNexus AI - Inteligência Central de Suprimentos - HSF",
+  "description": "Plataforma avançada de auditoria e gestão autônoma de suprimentos com tecnologia Nexus de reconhecimento documental via IA Gemini.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
