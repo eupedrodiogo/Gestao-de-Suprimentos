@@ -104,8 +104,13 @@ function App() {
   const [isRequestModalOpen, setIsRequestModalOpen] = useState(false);
   const [isTasyModalOpen, setIsTasyModalOpen] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState<PurchaseOrder | null>(null);
-  const [currentView, setCurrentView] = useState<ViewType>('dashboard');
+  const [currentView, setCurrentView] = useState<ViewType>(() => {
+    return (localStorage.getItem('currentView') as ViewType) || 'dashboard';
+  });
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isDesktopSidebarCollapsed, setIsDesktopSidebarCollapsed] = useState(() => {
+    return localStorage.getItem('isDesktopSidebarCollapsed') === 'true';
+  });
   
   const [isStrategyOpen, setIsStrategyOpen] = useState(false);
   const [isGeneratingStrategy, setIsGeneratingStrategy] = useState(false);
@@ -131,6 +136,14 @@ function App() {
       if (currentUser.role === 'COORD_ALMOXARIFADO') setWarehouseFilter('TODOS'); 
     }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem('currentView', currentView);
+  }, [currentView]);
+
+  useEffect(() => {
+    localStorage.setItem('isDesktopSidebarCollapsed', isDesktopSidebarCollapsed.toString());
+  }, [isDesktopSidebarCollapsed]);
 
   useEffect(() => {
     if (!user) return;
@@ -434,8 +447,124 @@ function App() {
       )}
 
       {/* Sidebar */}
-      <aside className={`fixed lg:static inset-y-0 left-0 w-[280px] bg-brand-900 z-[100] transform transition-transform duration-300 ease-out lg:translate-x-0 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} border-r border-brand-800 shadow-2xl lg:shadow-none`}>
-        <NavigationContent />
+      <aside className={`fixed lg:static inset-y-0 left-0 bg-brand-900 z-[100] transform transition-all duration-300 ease-in-out ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 ${isDesktopSidebarCollapsed ? 'lg:w-[80px]' : 'lg:w-[280px] w-[280px]'} border-r border-brand-800 shadow-2xl lg:shadow-none flex flex-col`}>
+        <div className="p-6 flex justify-between items-center border-b border-brand-800/50">
+          <div className={`flex items-center gap-3 ${isDesktopSidebarCollapsed ? 'lg:hidden' : ''}`}>
+            <div className="w-10 h-10 bg-gradient-to-tr from-brand-600 to-brand-600 rounded-xl flex items-center justify-center shadow-lg shadow-brand-900/20 shrink-0">
+              <Layers size={24} className="text-white animate-pulse" />
+            </div>
+            <div className="overflow-hidden">
+              <span className="block text-lg font-black tracking-tight text-white italic truncate">SupriNexus</span>
+              <span className="text-[9px] text-brand-500 uppercase font-black tracking-widest truncate block">Inteligência Logística</span>
+            </div>
+          </div>
+          {isDesktopSidebarCollapsed && (
+            <div className="hidden lg:flex w-full justify-center">
+              <div className="w-10 h-10 bg-gradient-to-tr from-brand-600 to-brand-600 rounded-xl flex items-center justify-center shadow-lg shadow-brand-900/20 shrink-0">
+                <Layers size={24} className="text-white" />
+              </div>
+            </div>
+          )}
+          <button onClick={() => setIsSidebarOpen(false)} className="lg:hidden p-2 text-brand-400 hover:text-white transition-colors shrink-0">
+            <X size={24} />
+          </button>
+        </div>
+
+        <div className={`px-6 py-6 border-b border-brand-800/50 ${isDesktopSidebarCollapsed ? 'lg:px-2' : ''}`}>
+          <div className={`flex items-center gap-3 mb-4 ${isDesktopSidebarCollapsed ? 'lg:justify-center' : ''}`}>
+             {user.avatar ? (
+               <img src={user.avatar} className="w-10 h-10 rounded-full border-2 border-brand-700 shrink-0" alt="Avatar" />
+             ) : (
+               <div className="w-10 h-10 bg-brand-800 rounded-full flex items-center justify-center text-brand-400 shrink-0"><UserIcon size={20}/></div>
+             )}
+             <div className={`overflow-hidden ${isDesktopSidebarCollapsed ? 'lg:hidden' : ''}`}>
+               <p className="text-white text-xs font-bold truncate">{user.name}</p>
+               <p className="text-brand-500 text-[9px] uppercase font-black truncate">{user.department}</p>
+             </div>
+          </div>
+          <button onClick={handleLogout} className={`w-full py-2 bg-brand-800 text-brand-400 hover:text-white hover:bg-red-900/50 rounded-lg text-[10px] font-black uppercase flex items-center justify-center gap-2 transition-colors ${isDesktopSidebarCollapsed ? 'lg:px-0 lg:py-3' : ''}`} title="Encerrar Sessão">
+            <LogOut size={isDesktopSidebarCollapsed ? 16 : 12} /> 
+            <span className={isDesktopSidebarCollapsed ? 'lg:hidden' : ''}>Encerrar Sessão</span>
+          </button>
+        </div>
+
+        <nav className={`flex-1 overflow-y-auto custom-scrollbar py-6 space-y-8 ${isDesktopSidebarCollapsed ? 'lg:px-2 px-6' : 'px-6'}`}>
+          <div>
+            <h3 className={`text-[9px] font-black text-brand-500 uppercase tracking-widest mb-4 ${isDesktopSidebarCollapsed ? 'lg:hidden' : ''}`}>Visão Geral</h3>
+            <ul className="space-y-2">
+              <li>
+                <button 
+                  onClick={() => { setCurrentView('dashboard'); setIsSidebarOpen(false); }}
+                  className={`w-full flex items-center gap-3 rounded-xl transition-all ${currentView === 'dashboard' ? 'bg-brand-600 text-white shadow-lg shadow-brand-900/20' : 'text-brand-400 hover:bg-white/5 hover:text-white'} ${isDesktopSidebarCollapsed ? 'lg:justify-center lg:p-3 p-3 px-4' : 'px-4 py-3'}`}
+                  title="Cockpit Operacional"
+                >
+                  <LayoutDashboard size={18} className="shrink-0" />
+                  <span className={`text-xs font-bold truncate ${isDesktopSidebarCollapsed ? 'lg:hidden' : ''}`}>Cockpit Operacional</span>
+                </button>
+              </li>
+              <li>
+                 <button 
+                  onClick={() => { setCurrentView('files'); setIsSidebarOpen(false); }}
+                  className={`w-full flex items-center gap-3 rounded-xl transition-all ${currentView === 'files' ? 'bg-brand-600 text-white shadow-lg shadow-brand-900/20' : 'text-brand-400 hover:bg-white/5 hover:text-white'} ${isDesktopSidebarCollapsed ? 'lg:justify-center lg:p-3 p-3 px-4' : 'px-4 py-3'}`}
+                  title="Arquivo Digital"
+                >
+                  <FolderOpen size={18} className="shrink-0" />
+                  <span className={`text-xs font-bold truncate ${isDesktopSidebarCollapsed ? 'lg:hidden' : ''}`}>Arquivo Digital</span>
+                </button>
+              </li>
+              <li>
+                 <button 
+                  onClick={() => { setCurrentView('inventory-dashboard'); setIsSidebarOpen(false); }}
+                  className={`w-full flex items-center gap-3 rounded-xl transition-all ${currentView === 'inventory-dashboard' ? 'bg-brand-600 text-white shadow-lg shadow-brand-900/20' : 'text-brand-400 hover:bg-white/5 hover:text-white'} ${isDesktopSidebarCollapsed ? 'lg:justify-center lg:p-3 p-3 px-4' : 'px-4 py-3'}`}
+                  title="Dashboard Estratégico"
+                >
+                  <BarChart3 size={18} className="shrink-0" />
+                  <span className={`text-xs font-bold truncate ${isDesktopSidebarCollapsed ? 'lg:hidden' : ''}`}>Dashboard Estratégico</span>
+                </button>
+              </li>
+              {canSeeSuppliers && (
+               <li>
+                 <button 
+                  onClick={() => { setCurrentView('suppliers'); setIsSidebarOpen(false); }}
+                  className={`w-full flex items-center gap-3 rounded-xl transition-all ${currentView === 'suppliers' ? 'bg-brand-600 text-white shadow-lg shadow-brand-900/20' : 'text-brand-400 hover:bg-white/5 hover:text-white'} ${isDesktopSidebarCollapsed ? 'lg:justify-center lg:p-3 p-3 px-4' : 'px-4 py-3'}`}
+                  title="Fornecedores (SRM)"
+                >
+                  <Truck size={18} className="shrink-0" />
+                  <span className={`text-xs font-bold truncate ${isDesktopSidebarCollapsed ? 'lg:hidden' : ''}`}>Fornecedores (SRM)</span>
+                </button>
+              </li>
+              )}
+            </ul>
+          </div>
+
+          {canSeeDashboard && !isDesktopSidebarCollapsed && (
+            <div>
+              <h3 className="text-[9px] font-black text-brand-500 uppercase tracking-widest mb-4">Métricas Globais</h3>
+              <CategoryChart orders={filteredOrders} />
+              <SpendHistoryMini orders={filteredOrders} />
+            </div>
+          )}
+        </nav>
+        
+        {['DIRETORIA', 'GERENCIA_SUPRIMENTOS'].includes(user.role) && (
+          <div className={`p-6 bg-brand-950 mt-auto ${isDesktopSidebarCollapsed ? 'lg:p-2 lg:flex lg:justify-center' : ''}`}>
+            <div 
+              className={`bg-gradient-to-br from-brand-800 to-brand-900 rounded-2xl relative overflow-hidden group cursor-pointer hover:scale-[1.02] transition-transform ${isDesktopSidebarCollapsed ? 'lg:p-3 p-4' : 'p-4'}`} 
+              onClick={handleGenerateStrategy}
+              title="Nexus Strategy"
+            >
+              <div className={`absolute top-0 right-0 p-3 opacity-20 ${isDesktopSidebarCollapsed ? 'lg:hidden' : ''}`}><BrainCircuit size={48} className="text-white"/></div>
+              <h4 className={`text-white font-black text-sm relative z-10 flex items-center gap-2 ${isDesktopSidebarCollapsed ? 'lg:justify-center' : 'mb-1'}`}>
+                {isDesktopSidebarCollapsed ? <BrainCircuit size={20} className="text-white lg:hidden" /> : null}
+                <span className={isDesktopSidebarCollapsed ? 'lg:hidden' : ''}>Nexus Strategy</span>
+                <Sparkles size={isDesktopSidebarCollapsed ? 16 : 12} className="text-amber-400 animate-pulse shrink-0"/>
+              </h4>
+              <p className={`text-brand-100 text-[10px] leading-relaxed relative z-10 ${isDesktopSidebarCollapsed ? 'lg:hidden' : ''}`}>
+                {isGeneratingStrategy ? 'Processando dados...' : 'Gerar relatório de sourcing e savings com IA.'}
+              </p>
+            </div>
+          </div>
+        )}
       </aside>
 
       {/* Main Content */}
@@ -444,6 +573,13 @@ function App() {
         <header className="h-20 bg-white/80 backdrop-blur-md border-b border-brand-200/60 flex items-center justify-between px-6 sm:px-8 z-40">
           <div className="flex items-center gap-4">
             <button onClick={() => setIsSidebarOpen(true)} className="lg:hidden p-2 text-brand-600 hover:bg-brand-100 rounded-lg">
+              <Menu size={24} />
+            </button>
+            <button 
+              onClick={() => setIsDesktopSidebarCollapsed(!isDesktopSidebarCollapsed)} 
+              className="hidden lg:flex p-2 text-brand-600 hover:bg-brand-100 rounded-lg transition-colors"
+              title={isDesktopSidebarCollapsed ? "Expandir Menu" : "Recolher Menu"}
+            >
               <Menu size={24} />
             </button>
             

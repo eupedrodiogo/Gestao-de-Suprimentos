@@ -58,6 +58,7 @@ const UploadModal: React.FC<UploadModalProps> = ({ isOpen, onClose, onSubmit }) 
   const [items, setItems] = useState<OrderItem[]>([]);
   const [stamps, setStamps] = useState<OrderStamp[]>([]);
   const [file, setFile] = useState<File | null>(null);
+  const [files, setFiles] = useState<File[]>([]);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -71,6 +72,7 @@ const UploadModal: React.FC<UploadModalProps> = ({ isOpen, onClose, onSubmit }) 
       setAmount('');
       setItems([]);
       setFile(null);
+      setFiles([]);
       setExtractError(null);
       setSubmitError(null);
       setShowPreview(false);
@@ -83,11 +85,15 @@ const UploadModal: React.FC<UploadModalProps> = ({ isOpen, onClose, onSubmit }) 
   }, [isOpen]);
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      const selectedFile = e.target.files[0];
-      setFile(selectedFile);
+    if (e.target.files && e.target.files.length > 0) {
+      const selectedFiles = Array.from(e.target.files);
+      setFiles(selectedFiles);
       
-      const objectUrl = URL.createObjectURL(selectedFile);
+      // Process the first file for preview and extraction
+      const firstFile = selectedFiles[0];
+      setFile(firstFile);
+      
+      const objectUrl = URL.createObjectURL(firstFile);
       setPreviewUrl(objectUrl);
       
       setExtractError(null);
@@ -95,7 +101,7 @@ const UploadModal: React.FC<UploadModalProps> = ({ isOpen, onClose, onSubmit }) 
       setIsExtracting(true);
       
       try {
-        const extracted = await extractDataFromDocument(selectedFile);
+        const extracted = await extractDataFromDocument(firstFile);
         
         if (extracted) {
           if (extracted.docRef) setDocRef(extracted.docRef);
@@ -151,18 +157,39 @@ const UploadModal: React.FC<UploadModalProps> = ({ isOpen, onClose, onSubmit }) 
     }
 
     try {
-      await onSubmit({
-        docRef,
-        supplierName,
-        category,
-        warehouse,
-        fileType,
-        amount: parseFloat(amount) || 0,
-        date: isoDate,
-        description,
-        items,
-        stamps,
-      }, file);
+      if (files.length > 1) {
+        // Process multiple files
+        for (const f of files) {
+          // For multiple files, we just use the basic form data for all of them
+          // In a real app, you'd want to extract data for each file individually
+          await onSubmit({
+            docRef: `${docRef}-${f.name}`,
+            supplierName,
+            category,
+            warehouse,
+            fileType,
+            amount: parseFloat(amount) || 0,
+            date: isoDate,
+            description: description || f.name,
+            items,
+            stamps,
+          }, f);
+        }
+      } else {
+        // Process single file
+        await onSubmit({
+          docRef,
+          supplierName,
+          category,
+          warehouse,
+          fileType,
+          amount: parseFloat(amount) || 0,
+          date: isoDate,
+          description,
+          items,
+          stamps,
+        }, file);
+      }
       onClose();
     } catch (error) {
       console.error(error);
@@ -197,11 +224,11 @@ const UploadModal: React.FC<UploadModalProps> = ({ isOpen, onClose, onSubmit }) 
 
           <div 
             className={`border-2 border-dashed rounded-[1.5rem] sm:rounded-[2rem] p-4 sm:p-6 transition-all relative min-h-[140px] flex items-center justify-center ${
-              file ? 'border-brand-500 bg-brand-50/10' : 'border-brand-200 hover:border-brand-400 cursor-pointer'
+              files.length > 0 ? 'border-brand-500 bg-brand-50/10' : 'border-brand-200 hover:border-brand-400 cursor-pointer'
             }`}
-            onClick={() => !file && fileInputRef.current?.click()}
+            onClick={() => files.length === 0 && fileInputRef.current?.click()}
           >
-            <input type="file" className="hidden" ref={fileInputRef} onChange={handleFileChange} accept=".pdf,image/*" />
+            <input type="file" className="hidden" ref={fileInputRef} onChange={handleFileChange} accept=".pdf,image/*" multiple />
             
             {isExtracting && (
               <div className="absolute inset-0 bg-white/90 flex flex-col items-center justify-center rounded-[1.5rem] sm:rounded-[2rem] z-10 p-4">
@@ -210,46 +237,52 @@ const UploadModal: React.FC<UploadModalProps> = ({ isOpen, onClose, onSubmit }) 
               </div>
             )}
 
-            {file ? (
-              <div className="w-full flex items-center justify-between gap-4 p-4 bg-white rounded-2xl border border-brand-100 shadow-sm">
-                <div className="flex items-center gap-4 min-w-0">
-                  <div className="w-12 h-12 bg-brand-50 text-brand-600 rounded-xl flex items-center justify-center shrink-0">
-                    <FileText size={24} />
-                  </div>
-                  <div className="text-left min-w-0">
-                    <span className="block text-sm font-black text-brand-900 truncate max-w-[200px] lg:max-w-[300px]">{file.name}</span>
-                    <div className="flex flex-wrap gap-2 mt-1">
-                      {!extractError && fileType !== 'OTHER' && (
-                        <span className="text-[9px] font-black text-brand-600 uppercase bg-brand-50 px-2 py-0.5 rounded-md flex items-center gap-1">
-                          <CheckCircle2 size={10} /> {FILE_TYPES.find(f => f.value === fileType)?.label} Detectado
-                        </span>
-                      )}
-                      {extractError && (
-                         <span className="text-[9px] font-black text-amber-600 uppercase bg-amber-50 px-2 py-0.5 rounded-md flex items-center gap-1">
-                          <AlertCircle size={10} /> Verificação Manual
-                        </span>
-                      )}
+            {files.length > 0 ? (
+              <div className="w-full flex flex-col gap-4">
+                <div className="flex items-center justify-between gap-4 p-4 bg-white rounded-2xl border border-brand-100 shadow-sm">
+                  <div className="flex items-center gap-4 min-w-0">
+                    <div className="w-12 h-12 bg-brand-50 text-brand-600 rounded-xl flex items-center justify-center shrink-0">
+                      <FileText size={24} />
+                    </div>
+                    <div className="text-left min-w-0">
+                      <span className="block text-sm font-black text-brand-900 truncate max-w-[200px] lg:max-w-[300px]">
+                        {files.length === 1 ? files[0].name : `${files.length} arquivos selecionados`}
+                      </span>
+                      <div className="flex flex-wrap gap-2 mt-1">
+                        {!extractError && fileType !== 'OTHER' && (
+                          <span className="text-[9px] font-black text-brand-600 uppercase bg-brand-50 px-2 py-0.5 rounded-md flex items-center gap-1">
+                            <CheckCircle2 size={10} /> {FILE_TYPES.find(f => f.value === fileType)?.label} Detectado
+                          </span>
+                        )}
+                        {extractError && (
+                           <span className="text-[9px] font-black text-amber-600 uppercase bg-amber-50 px-2 py-0.5 rounded-md flex items-center gap-1">
+                            <AlertCircle size={10} /> Verificação Manual
+                          </span>
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
-                
-                <div className="flex items-center gap-2 shrink-0">
-                  <button 
-                    type="button"
-                    onClick={(e) => { e.stopPropagation(); setShowPreview(true); }}
-                    className="p-3 bg-brand-600 text-white rounded-xl hover:bg-brand-700 transition-all shadow-lg hover:shadow-brand-200 active:scale-95"
-                    title="Visualizar arquivo"
-                  >
-                    <Eye size={18} />
-                  </button>
-                  <button 
-                    type="button"
-                    onClick={(e) => { e.stopPropagation(); setFile(null); setPreviewUrl(null); }}
-                    className="p-3 bg-brand-50 text-brand-400 rounded-xl hover:bg-red-50 hover:text-red-500 transition-all active:scale-95"
-                    title="Remover"
-                  >
-                    <Trash2 size={18} />
-                  </button>
+                  
+                  <div className="flex items-center gap-2 shrink-0">
+                    {files.length === 1 && (
+                      <button 
+                        type="button"
+                        onClick={(e) => { e.stopPropagation(); setShowPreview(true); }}
+                        className="p-3 bg-brand-600 text-white rounded-xl hover:bg-brand-700 transition-all shadow-lg hover:shadow-brand-200 active:scale-95"
+                        title="Visualizar arquivo"
+                      >
+                        <Eye size={18} />
+                      </button>
+                    )}
+                    <button 
+                      type="button"
+                      onClick={(e) => { e.stopPropagation(); setFile(null); setFiles([]); setPreviewUrl(null); }}
+                      className="p-3 bg-brand-50 text-brand-400 rounded-xl hover:bg-red-50 hover:text-red-500 transition-all active:scale-95"
+                      title="Remover"
+                    >
+                      <Trash2 size={18} />
+                    </button>
+                  </div>
                 </div>
               </div>
             ) : (

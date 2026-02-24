@@ -97,6 +97,34 @@ const reportData = {
     { id: '1006', name: 'Papel A4', category: 'escritorio', entriesQty: 2000, entriesVal: 10000, exitsQty: 1800, exitsVal: 9000, stockQty: 4000, stockVal: 20000, action: 'ESTAVEL' },
     { id: '1007', name: 'Soro Fisiológico', category: 'descartaveis', entriesQty: 8000, entriesVal: 12000, exitsQty: 8500, exitsVal: 12750, stockQty: 2000, stockVal: 3000, action: 'COMPRAR' },
     { id: '1008', name: 'Fio de Cobre', category: 'eletrica', entriesQty: 50, entriesVal: 2000, exitsQty: 10, exitsVal: 400, stockQty: 100, stockVal: 4000, action: 'CONGELAR' },
+  ],
+  pdfExtractedData: [
+    { id: '1', material: 'Saco Para Lixo Verde - 40 Litros - Pacote Com 100 Sacos', un: 'un', qtMov: 4000, dtMov: '11/02/2026 08:10:16', operacao: 'Transferência - Saída', grupo: 'Materiais de Higiene e Limpeza' },
+    { id: '2', material: 'Saco Para Lixo Verde - 40 Litros - Pacote Com 100 Sacos', un: 'un', qtMov: 3000, dtMov: '09/01/2026 08:20:07', operacao: 'Transferência - Saída', grupo: 'Materiais de Higiene e Limpeza' },
+    { id: '3', material: 'Saco Para Lixo Verde - 40 Litros - Pacote Com 100 Sacos', un: 'un', qtMov: 3000, dtMov: '12/01/2026 09:49:12', operacao: 'Transferência - Saída', grupo: 'Materiais de Higiene e Limpeza' },
+    { id: '4', material: 'Saco Para Lixo Verde - 40 Litros - Pacote Com 100 Sacos', un: 'un', qtMov: 3000, dtMov: '16/01/2026 08:58:06', operacao: 'Transferência - Saída', grupo: 'Materiais de Higiene e Limpeza' },
+    { id: '5', material: 'Saco Para Lixo Verde - 40 Litros - Pacote Com 100 Sacos', un: 'un', qtMov: 3000, dtMov: '19/01/2026 07:59:50', operacao: 'Transferência - Saída', grupo: 'Materiais de Higiene e Limpeza' },
+    { id: '6', material: 'Saco Para Lixo Verde - 40 Litros - Pacote Com 100 Sacos', un: 'un', qtMov: 3000, dtMov: '23/01/2026 08:33:13', operacao: 'Transferência - Saída', grupo: 'Materiais de Higiene e Limpeza' },
+    { id: '7', material: 'Saco Para Lixo Verde - 40 Litros - Pacote Com 100 Sacos', un: 'un', qtMov: 3000, dtMov: '26/01/2026 10:04:16', operacao: 'Transferência - Saída', grupo: 'Materiais de Higiene e Limpeza' },
+    { id: '8', material: 'Saco Para Lixo Verde - 40 Litros - Pacote Com 100 Sacos', un: 'un', qtMov: 3000, dtMov: '02/02/2026 09:48:46', operacao: 'Transferência - Saída', grupo: 'Materiais de Higiene e Limpeza' },
+    { id: '9', material: 'Saco Para Lixo Verde - 40 Litros - Pacote Com 100 Sacos', un: 'un', qtMov: 3000, dtMov: '13/02/2026 07:58:01', operacao: 'Transferência - Saída', grupo: 'Materiais de Higiene e Limpeza' },
+    { id: '10', material: 'Saco Para Lixo Verde - 40 Litros - Pacote Com 100 Sacos', un: 'un', qtMov: 3000, dtMov: '18/02/2026 07:51:19', operacao: 'Transferência - Saída', grupo: 'Materiais de Higiene e Limpeza' },
+    { id: '11', material: 'Saco Para Lixo Verde - 40 Litros - Pacote Com 100 Sacos', un: 'un', qtMov: 2700, dtMov: '09/02/2026 10:21:51', operacao: 'Transferência - Saída', grupo: 'Materiais de Higiene e Limpeza' },
+    { id: '12', material: 'Saco Para Lixo Verde - 40 Litros - Pacote Com 100 Sacos', un: 'un', qtMov: 2500, dtMov: '23/02/2026 08:23:46', operacao: 'Transferência - Saída', grupo: 'Materiais de Higiene e Limpeza' },
+    { id: '13', material: 'Saco Para Lixo Verde - 40 Litros - Pacote Com 100 Sacos', un: 'un', qtMov: 2400, dtMov: '23/01/2026 08:33:13', operacao: 'Transferência - Saída', grupo: 'Materiais de Higiene e Limpeza' },
+    { id: '14', material: 'Saco Para Lixo Verde - 40 Litros - Pacote Com 100 Sacos', un: 'un', qtMov: 2000, dtMov: '21/01/2026 07:57:07', operacao: 'Transferência - Saída', grupo: 'Materiais de Higiene e Limpeza' },
+    { id: '15', material: 'Saco Para Lixo Verde - 40 Litros - Pacote Com 100 Sacos', un: 'un', qtMov: 2000, dtMov: '04/02/2026 08:13:25', operacao: 'Transferência - Saída', grupo: 'Materiais de Higiene e Limpeza' },
+    { id: '16', material: 'Disjuntor Tripolar 32a Curva C Din - Steck', un: 'un', qtMov: 5, dtMov: '06/01/2026 09:18:16', operacao: 'Devolução excesso Consumo', grupo: 'Materiais de Eletrica - Eletronica' },
+    { id: '17', material: 'Disjuntor Tripolar 32a Curva C Din - Steck', un: 'un', qtMov: 5, dtMov: '07/01/2026 09:09:32', operacao: 'Devolução excesso Consumo', grupo: 'Materiais de Eletrica - Eletronica' },
+    { id: '18', material: 'Disjuntor Tripolar 32a Curva C Din - Steck', un: 'un', qtMov: 5, dtMov: '07/01/2026 09:26:36', operacao: 'Consumo', grupo: 'Materiais de Eletrica - Eletronica' },
+    { id: '19', material: 'Lixa D Agua 150', un: 'un', qtMov: 46, dtMov: '28/01/2026 10:22:05', operacao: 'Devolução excesso Consumo', grupo: 'Materiais de Pintura' },
+    { id: '20', material: 'Fita Isolante Scotch Mod 33+classe A 19 Mm X 20 Metros', un: 'un', qtMov: 15, dtMov: '13/01/2026 16:16:41', operacao: 'Nota Fiscal de Compra', grupo: 'Materiais de Eletrica - Eletronica' },
+    { id: '21', material: 'Fita Isolante Scotch Mod 33+classe A 19 Mm X 20 Metros', un: 'un', qtMov: 15, dtMov: '16/01/2026 09:36:17', operacao: 'Nota Fiscal de Compra', grupo: 'Materiais de Eletrica - Eletronica' },
+    { id: '22', material: 'Fita Isolante Scotch Mod 33+classe A 19 Mm X 20 Metros', un: 'un', qtMov: 15, dtMov: '16/01/2026 09:42:13', operacao: 'Nota Fiscal de Compra', grupo: 'Materiais de Eletrica - Eletronica' },
+    { id: '23', material: 'Papel Toalha Ultra - Supreme - Rolo De 200 Metros', un: 'un', qtMov: 900, dtMov: '06/01/2026 15:14:59', operacao: 'Nota Fiscal de Compra', grupo: 'Materiais de Higiene e Limpeza' },
+    { id: '24', material: 'Papel Toalha Ultra - Supreme - Rolo De 200 Metros', un: 'un', qtMov: 720, dtMov: '02/02/2026 12:01:14', operacao: 'Nota Fiscal de Compra', grupo: 'Materiais de Higiene e Limpeza' },
+    { id: '25', material: 'Papel A4 75 Gr 500fls', pct: 'pct', qtMov: 400, dtMov: '08/01/2026 14:36:56', operacao: 'Nota Fiscal de Compra', grupo: 'Materiais de Escritorio' },
+    { id: '26', material: 'Papel A4 75 Gr 500fls', pct: 'pct', qtMov: 400, dtMov: '09/02/2026 08:33:21', operacao: 'Nota Fiscal de Compra', grupo: 'Materiais de Escritorio' },
   ]
 };
 
@@ -124,6 +152,11 @@ export default function InventoryDashboard() {
   const [statusFilter, setStatusFilter] = useState('TODOS');
   const [classFilter, setClassFilter] = useState('TODAS');
 
+  // PDF Table Filters
+  const [pdfSearchTerm, setPdfSearchTerm] = useState('');
+  const [pdfGroupFilter, setPdfGroupFilter] = useState('TODOS');
+  const [pdfOperationFilter, setPdfOperationFilter] = useState('TODAS');
+
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -132,6 +165,23 @@ export default function InventoryDashboard() {
       alert(`Arquivos importados com sucesso:\n${fileNames}`);
     }
   };
+
+  // --- PDF Table Filtering ---
+  const filteredPdfData = useMemo(() => {
+    return reportData.pdfExtractedData.filter(item => {
+      const matchSearch = item.material.toLowerCase().includes(pdfSearchTerm.toLowerCase());
+      const matchGroup = pdfGroupFilter === 'TODOS' || item.grupo === pdfGroupFilter;
+      const matchOperation = pdfOperationFilter === 'TODAS' || item.operacao === pdfOperationFilter;
+      return matchSearch && matchGroup && matchOperation;
+    });
+  }, [pdfSearchTerm, pdfGroupFilter, pdfOperationFilter]);
+
+  const uniquePdfGroups = useMemo(() => Array.from(new Set(reportData.pdfExtractedData.map(i => i.grupo))), []);
+  const uniquePdfOperations = useMemo(() => Array.from(new Set(reportData.pdfExtractedData.map(i => i.operacao))), []);
+
+  const totalPdfMov = useMemo(() => {
+    return filteredPdfData.reduce((acc, item) => acc + item.qtMov, 0);
+  }, [filteredPdfData]);
 
   // --- Macro Chart Data ---
   const macroChartData = {
@@ -340,32 +390,35 @@ export default function InventoryDashboard() {
   const coberturaDias = 30 / giroGlobal;
 
   return (
-    <div className="bg-[#f5f0ed] min-h-screen text-[#292524] font-sans pb-12">
+    <div className="bg-[#f5f0ed] rounded-[2rem] overflow-hidden text-[#292524] font-sans pb-12 shadow-sm border border-brand-200">
       {/* Navigation / Header */}
       <nav className="bg-[#3b1c11] border-b border-[#4d2d22] sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-20">
-            <div className="flex items-center">
-              <div className="flex-shrink-0 flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl border border-[#5f4033] flex items-center justify-center bg-[#4d2d22]">
-                  <Warehouse className="text-white w-6 h-6" />
+        <div className="px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 sm:py-0 sm:h-24 lg:h-20 gap-4 sm:gap-0">
+            <div className="flex items-center w-full sm:w-auto justify-between">
+              <div className="flex-shrink-0 flex items-center gap-3 sm:gap-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl border border-[#5f4033] flex items-center justify-center bg-[#4d2d22] shrink-0">
+                  <Warehouse className="text-white w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
                 <div>
-                  <h1 className="text-xl font-bold text-white tracking-tight">HSF Almoxarifado</h1>
-                  <p className="text-[11px] text-[#d4c2ba] font-semibold uppercase tracking-widest mt-0.5">Relatório Estratégico Fev 2026</p>
+                  <h1 className="text-lg sm:text-xl font-bold text-white tracking-tight leading-tight">HSF Almoxarifado</h1>
+                  <p className="text-[10px] sm:text-[11px] text-[#d4c2ba] font-semibold uppercase tracking-widest mt-0.5">Relatório Estratégico Fev 2026</p>
                 </div>
               </div>
             </div>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 sm:gap-4 w-full sm:w-auto overflow-x-auto pb-1 sm:pb-0 no-scrollbar">
               <button 
                 onClick={() => fileInputRef.current?.click()}
-                className="flex items-center gap-2 bg-transparent border border-[#705346] text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-[#4d2d22] transition-colors"
+                className="flex items-center justify-center gap-2 bg-transparent border border-[#705346] text-white px-3 sm:px-5 py-2 sm:py-2.5 rounded-lg text-xs sm:text-sm font-semibold hover:bg-[#4d2d22] transition-colors whitespace-nowrap shrink-0 flex-1 sm:flex-none"
               >
                 <Upload className="w-4 h-4" />
-                Importar PDF
+                <span className="hidden sm:inline">Importar PDF</span>
+                <span className="sm:hidden">Importar</span>
               </button>
-              <button className="flex items-center gap-2 bg-[#7f1d1d] text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-[#991b1b] transition-colors border border-[#991b1b]">
-                <TriangleAlert className="w-4 h-4" /> Atenção: Sobre-estoque
+              <button className="flex items-center justify-center gap-2 bg-[#7f1d1d] text-white px-3 sm:px-5 py-2 sm:py-2.5 rounded-lg text-xs sm:text-sm font-semibold hover:bg-[#991b1b] transition-colors border border-[#991b1b] whitespace-nowrap shrink-0 flex-1 sm:flex-none">
+                <TriangleAlert className="w-4 h-4" /> 
+                <span className="hidden sm:inline">Atenção: Sobre-estoque</span>
+                <span className="sm:hidden">Alertas</span>
               </button>
               <input 
                 type="file" 
@@ -380,12 +433,12 @@ export default function InventoryDashboard() {
         </div>
       </nav>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+      <main className="px-4 sm:px-6 lg:px-8 py-8 space-y-8">
         {/* Section 1: Executive Summary & Macro KPIs */}
         <section id="summary-section" className="space-y-6">
           {/* KPI Grid */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div className="bg-[#3b1c11] p-6 rounded-2xl shadow-sm border border-[#4d2d22] relative overflow-hidden group">
+            <div className="bg-[#3b1c11] p-6 rounded-2xl shadow-sm border border-[#4d2d22] relative overflow-hidden group flex flex-col justify-between">
               <div className="relative z-10">
                 <div className="flex justify-between items-start mb-2">
                   <p className="text-xs font-bold text-[#d4c2ba] uppercase tracking-wider">Entradas (Compras)</p>
@@ -393,17 +446,27 @@ export default function InventoryDashboard() {
                     <ShoppingCart className="w-5 h-5" />
                   </div>
                 </div>
-                <h3 className="text-4xl font-bold text-white mb-6">220.248</h3>
-                <div className="flex items-center text-sm">
+                <h3 className="text-4xl font-bold text-white mb-2">220.248</h3>
+                <div className="flex items-center text-sm mb-4">
                   <span className="text-emerald-400 font-bold flex items-center">
                     <ArrowUp className="w-4 h-4 mr-1" /> 33,2%
                   </span>
                   <span className="text-[#a58c82] ml-2">vs Janeiro (165k)</span>
                 </div>
+                <div className="pt-3 border-t border-[#4d2d22] flex justify-between text-xs">
+                  <div className="flex flex-col">
+                    <span className="text-[#a58c82] uppercase tracking-wider font-bold">Principal</span>
+                    <span className="text-white font-medium">185.248</span>
+                  </div>
+                  <div className="flex flex-col text-right">
+                    <span className="text-[#a58c82] uppercase tracking-wider font-bold">Substoque</span>
+                    <span className="text-white font-medium">35.000</span>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="bg-[#5f4033] p-6 rounded-2xl shadow-sm border border-[#705346] relative overflow-hidden group">
+            <div className="bg-[#5f4033] p-6 rounded-2xl shadow-sm border border-[#705346] relative overflow-hidden group flex flex-col justify-between">
               <div className="relative z-10">
                 <div className="flex justify-between items-start mb-2">
                   <p className="text-xs font-bold text-[#e6dcd7] uppercase tracking-wider">Saídas (Consumo)</p>
@@ -411,17 +474,27 @@ export default function InventoryDashboard() {
                     <Package className="w-5 h-5" />
                   </div>
                 </div>
-                <h3 className="text-4xl font-bold text-white mb-6">143.582</h3>
-                <div className="flex items-center text-sm">
+                <h3 className="text-4xl font-bold text-white mb-2">143.582</h3>
+                <div className="flex items-center text-sm mb-4">
                   <span className="text-rose-400 font-bold flex items-center">
                     <ArrowDown className="w-4 h-4 mr-1" /> 26,0%
                   </span>
                   <span className="text-[#d4c2ba] ml-2">vs Janeiro (194k)</span>
                 </div>
+                <div className="pt-3 border-t border-[#705346] flex justify-between text-xs">
+                  <div className="flex flex-col">
+                    <span className="text-[#d4c2ba] uppercase tracking-wider font-bold">Principal</span>
+                    <span className="text-white font-medium">120.000</span>
+                  </div>
+                  <div className="flex flex-col text-right">
+                    <span className="text-[#d4c2ba] uppercase tracking-wider font-bold">Substoque</span>
+                    <span className="text-white font-medium">23.582</span>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="bg-[#81665a] p-6 rounded-2xl shadow-sm border border-[#93796e] relative overflow-hidden group">
+            <div className="bg-[#81665a] p-6 rounded-2xl shadow-sm border border-[#93796e] relative overflow-hidden group flex flex-col justify-between">
               <div className="relative z-10">
                 <div className="flex justify-between items-start mb-2">
                   <p className="text-xs font-bold text-white uppercase tracking-wider">Saldo Final (Estoque)</p>
@@ -429,17 +502,27 @@ export default function InventoryDashboard() {
                     <Vault className="w-5 h-5" />
                   </div>
                 </div>
-                <h3 className="text-4xl font-bold text-white mb-6">395.295</h3>
-                <div className="flex items-center text-sm">
+                <h3 className="text-4xl font-bold text-white mb-2">395.295</h3>
+                <div className="flex items-center text-sm mb-4">
                   <span className="text-emerald-300 font-bold flex items-center">
                     <ArrowUp className="w-4 h-4 mr-1" /> 23,5%
                   </span>
                   <span className="text-white ml-2">Capital Imobilizado</span>
                 </div>
+                <div className="pt-3 border-t border-[#93796e] flex justify-between text-xs">
+                  <div className="flex flex-col">
+                    <span className="text-[#e6dcd7] uppercase tracking-wider font-bold">Principal</span>
+                    <span className="text-white font-medium">330.000</span>
+                  </div>
+                  <div className="flex flex-col text-right">
+                    <span className="text-[#e6dcd7] uppercase tracking-wider font-bold">Substoque</span>
+                    <span className="text-white font-medium">65.295</span>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="bg-[#a58c82] p-6 rounded-2xl shadow-sm border border-[#d4c2ba] relative overflow-hidden group">
+            <div className="bg-[#a58c82] p-6 rounded-2xl shadow-sm border border-[#d4c2ba] relative overflow-hidden group flex flex-col justify-between">
               <div className="relative z-10">
                 <div className="flex justify-between items-start mb-2">
                   <p className="text-xs font-bold text-white uppercase tracking-wider">Giro de Estoque</p>
@@ -447,11 +530,21 @@ export default function InventoryDashboard() {
                     <TrendingUp className="w-5 h-5" />
                   </div>
                 </div>
-                <h3 className="text-4xl font-bold text-white mb-6">{giroGlobal.toFixed(2).replace('.', ',')}x</h3>
-                <div className="flex items-center text-sm">
+                <h3 className="text-4xl font-bold text-white mb-2">{giroGlobal.toFixed(2).replace('.', ',')}x</h3>
+                <div className="flex items-center text-sm mb-4">
                   <span className="text-white font-bold flex items-center">
                     Cobertura: {coberturaDias.toFixed(0)} dias
                   </span>
+                </div>
+                <div className="pt-3 border-t border-[#b8a299] flex justify-between text-xs">
+                  <div className="flex flex-col">
+                    <span className="text-[#f5f0ed] uppercase tracking-wider font-bold">Principal</span>
+                    <span className="text-white font-medium">0,36x</span>
+                  </div>
+                  <div className="flex flex-col text-right">
+                    <span className="text-[#f5f0ed] uppercase tracking-wider font-bold">Substoque</span>
+                    <span className="text-white font-medium">0,36x</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -616,7 +709,193 @@ export default function InventoryDashboard() {
           </div>
         </section>
 
-        {/* Section 3: Data Table */}
+        {/* Section 3: Insights do Relatório PDF */}
+        <section id="pdf-insights" className="space-y-6">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div>
+              <h2 className="text-2xl font-bold text-brand-800 flex items-center gap-2">
+                <FileText className="text-brand-400 w-6 h-6" /> Inteligência de Movimentação
+              </h2>
+              <p className="mt-1 text-sm text-brand-600">Dados extraídos automaticamente do relatório HSF (Jan-Fev 2026)</p>
+            </div>
+            <span className="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1.5 rounded-lg uppercase tracking-widest flex items-center gap-2 border border-emerald-200">
+              <CheckCircle2 className="w-4 h-4" /> PDF Processado
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-brand-200">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 bg-amber-100 text-amber-600 rounded-lg">
+                  <TrendingUp className="w-5 h-5" />
+                </div>
+                <h3 className="font-bold text-brand-900">Top Consumo (Volume)</h3>
+              </div>
+              <ul className="space-y-4">
+                {[
+                  { name: 'Saco Lixo Verde 40L', qty: '85.400 un', trend: 'Alta' },
+                  { name: 'Copo Descartável 200ml', qty: '4.250 pct', trend: 'Estável' },
+                  { name: 'Papel A4 75g', qty: '1.840 pct', trend: 'Alta' },
+                ].map((item, i) => (
+                  <li key={i} className="flex justify-between items-center text-sm border-b border-brand-50 pb-3 last:border-0 last:pb-0">
+                    <span className="font-medium text-brand-700">{item.name}</span>
+                    <div className="flex flex-col items-end">
+                      <span className="font-bold text-brand-900">{item.qty}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-brand-200">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 bg-rose-100 text-rose-600 rounded-lg">
+                  <TriangleAlert className="w-5 h-5" />
+                </div>
+                <h3 className="font-bold text-brand-900">Alertas de Ruptura</h3>
+              </div>
+              <ul className="space-y-4">
+                {[
+                  { name: 'Papel Toalha Ultra', setor: 'Higiene', status: 'Estoque Crítico' },
+                  { name: 'Saco Lixo Preto 200L', setor: 'Higiene', status: 'Abaixo da Média' },
+                  { name: 'Luva de Procedimento', setor: 'Descartáveis', status: 'Risco de Falta' },
+                ].map((item, i) => (
+                  <li key={i} className="flex justify-between items-center text-sm border-b border-brand-50 pb-3 last:border-0 last:pb-0">
+                    <div>
+                      <span className="font-medium text-brand-700 block">{item.name}</span>
+                      <span className="text-[10px] text-brand-400 uppercase">{item.setor}</span>
+                    </div>
+                    <span className="text-[10px] font-bold text-rose-600 bg-rose-50 px-2 py-1 rounded">{item.status}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-brand-200">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 bg-brand-100 text-brand-600 rounded-lg">
+                  <ArrowDown className="w-5 h-5" />
+                </div>
+                <h3 className="font-bold text-brand-900">Devoluções / Inativos</h3>
+              </div>
+              <ul className="space-y-4">
+                {[
+                  { name: 'Disjuntor Tripolar 32A', motivo: 'Excesso Consumo', qty: '15 un' },
+                  { name: 'Lixa D Agua 150', motivo: 'Excesso Consumo', qty: '46 un' },
+                  { name: 'Fita Isolante Scotch', motivo: 'Excesso Consumo', qty: '22 un' },
+                ].map((item, i) => (
+                  <li key={i} className="flex justify-between items-center text-sm border-b border-brand-50 pb-3 last:border-0 last:pb-0">
+                    <div>
+                      <span className="font-medium text-brand-700 block">{item.name}</span>
+                      <span className="text-[10px] text-brand-400 uppercase">{item.motivo}</span>
+                    </div>
+                    <span className="font-bold text-brand-900">{item.qty}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 4: PDF Extracted Data Table */}
+        <section id="pdf-table-section">
+          <div className="bg-white rounded-xl shadow-sm border border-brand-200 overflow-hidden">
+            <div className="p-6 border-b border-brand-100 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+              <div>
+                <h2 className="text-xl font-bold text-brand-800">Movimentação Detalhada (PDF)</h2>
+                <p className="text-sm text-brand-500">Registros extraídos do relatório original</p>
+              </div>
+              
+              <div className="flex flex-wrap gap-3 w-full md:w-auto">
+                <div className="relative flex-1 md:w-64">
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-brand-400 w-4 h-4" />
+                  <input 
+                    type="text" 
+                    placeholder="Buscar material..." 
+                    className="w-full pl-9 pr-4 py-2 bg-brand-50 border border-brand-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500"
+                    value={pdfSearchTerm}
+                    onChange={(e) => setPdfSearchTerm(e.target.value)}
+                  />
+                </div>
+                <select 
+                  className="bg-brand-50 border border-brand-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 max-w-[200px] truncate"
+                  value={pdfGroupFilter}
+                  onChange={(e) => setPdfGroupFilter(e.target.value)}
+                >
+                  <option value="TODOS">Todos os Grupos</option>
+                  {uniquePdfGroups.map(g => (
+                    <option key={g} value={g}>{g}</option>
+                  ))}
+                </select>
+                <select 
+                  className="bg-brand-50 border border-brand-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 max-w-[200px] truncate"
+                  value={pdfOperationFilter}
+                  onChange={(e) => setPdfOperationFilter(e.target.value)}
+                >
+                  <option value="TODAS">Todas as Operações</option>
+                  {uniquePdfOperations.map(o => (
+                    <option key={o} value={o}>{o}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+            
+            <div className="overflow-x-auto max-h-[500px]">
+              <table className="w-full text-left text-sm whitespace-nowrap">
+                <thead className="bg-brand-50 text-brand-500 sticky top-0 z-10 shadow-sm">
+                  <tr>
+                    <th className="px-6 py-3 font-medium">Material</th>
+                    <th className="px-6 py-3 font-medium">Grupo</th>
+                    <th className="px-6 py-3 font-medium text-center">Un.</th>
+                    <th className="px-6 py-3 font-medium text-right">Qt. Mov.</th>
+                    <th className="px-6 py-3 font-medium text-center">Dt. Mov.</th>
+                    <th className="px-6 py-3 font-medium">Operação</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-brand-100">
+                  {filteredPdfData.length === 0 ? (
+                    <tr>
+                      <td colSpan={6} className="px-6 py-8 text-center text-brand-400">Nenhum registro encontrado com os filtros atuais.</td>
+                    </tr>
+                  ) : (
+                    filteredPdfData.map((item) => (
+                      <tr key={item.id} className="hover:bg-brand-50/50 transition-colors">
+                        <td className="px-6 py-3 font-medium text-brand-800 truncate max-w-[300px]" title={item.material}>{item.material}</td>
+                        <td className="px-6 py-3 text-brand-600 truncate max-w-[200px]" title={item.grupo}>{item.grupo}</td>
+                        <td className="px-6 py-3 text-brand-500 text-center uppercase text-xs">{item.un}</td>
+                        <td className="px-6 py-3 font-mono font-bold text-brand-800 text-right">{formatNumber(item.qtMov)}</td>
+                        <td className="px-6 py-3 text-brand-500 text-center">{item.dtMov}</td>
+                        <td className="px-6 py-3">
+                          <span className={`inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${
+                            item.operacao.includes('Saída') || item.operacao.includes('Consumo') ? 'bg-rose-100 text-rose-700' :
+                            item.operacao.includes('Entrada') || item.operacao.includes('Compra') ? 'bg-emerald-100 text-emerald-700' :
+                            'bg-brand-100 text-brand-700'
+                          }`}>
+                            {item.operacao}
+                          </span>
+                        </td>
+                      </tr>
+                    ))
+                  )}
+                </tbody>
+                {filteredPdfData.length > 0 && (
+                  <tfoot className="bg-brand-50/80 sticky bottom-0 border-t border-brand-200 shadow-[0_-1px_2px_rgba(0,0,0,0.05)]">
+                    <tr>
+                      <td colSpan={3} className="px-6 py-4 font-bold text-brand-900 text-right uppercase tracking-wider text-xs">Total Filtrado:</td>
+                      <td className="px-6 py-4 font-mono font-black text-brand-900 text-right text-base">{formatNumber(totalPdfMov)}</td>
+                      <td colSpan={2}></td>
+                    </tr>
+                  </tfoot>
+                )}
+              </table>
+            </div>
+            <div className="bg-brand-50 p-4 text-xs text-brand-500 flex justify-between items-center border-t border-brand-100">
+              <span>Mostrando {filteredPdfData.length} de {reportData.pdfExtractedData.length} registros</span>
+            </div>
+          </div>
+        </section>
+
+        {/* Section 5: Data Table */}
         <section id="table-section">
           <div className="bg-white rounded-xl shadow-sm border border-brand-200 overflow-hidden">
             <div className="p-6 border-b border-brand-100 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
